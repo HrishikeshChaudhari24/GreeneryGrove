@@ -688,7 +688,7 @@
         async function fetch_all_data() {
             try {
                 // Define the URL for the API endpoint
-                var url = 'http://localhost:3000/getall';
+                var url = 'https://greenerygrove.onrender.com//getall';
 
                 // Make a GET request using the Fetch API
                 const response = await fetch(url, {
@@ -726,7 +726,7 @@
                                             <i class="far fa-star"></i>
                                         </div>
                                         <p>₹${item.price}</p>
-                                        <form action="http://localhost:3000/cart/${userData._id}?plantId=${item._id}&quantity=1" method="post">
+                                        <form action="https://greenerygrove.onrender.com/cart/${userData._id}?plantId=${item._id}&quantity=1" method="post">
                                             <button class="btn" type="submit">Add to Cart</button>
                                         </form>
                                     </div>
@@ -748,7 +748,7 @@
         async function fetch_user_data() {
             try {
                 // Define the URL for the API endpoint
-                var url = 'http://localhost:3000/senduser';
+                var url = 'https://greenerygrove.onrender.com/senduser';
                 
                 // Make a GET request using the Fetch API
                 const response = await fetch(url, {
@@ -771,7 +771,7 @@
 
                 // Update profile URL after fetching userData
                 var profile_id = document.querySelector("#profile_id");
-                var adminurl = `http://localhost:3000/profile/${userData._id}`;
+                var adminurl = `https://greenerygrove.onrender.com/profile/${userData._id}`;
                 profile_id.setAttribute('href', adminurl);
 
             } catch (error) {

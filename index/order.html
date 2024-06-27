@@ -132,7 +132,7 @@
                 userId = pathParts[pathParts.length - 1]; // Assume 'userId' is the last part of the path
             }
             const go_checkout=document.getElementById("go_checkout")
-            var checkouturl=`http://localhost:3000/order/${userId}`
+            var checkouturl=`https://greenerygrove.onrender.com/order/${userId}`
             go_checkout.setAttribute("href",checkouturl)
             return userId;
         }
@@ -148,7 +148,7 @@
         // Function to fetch cart data
         async function fetchCartData() {
             try {
-                const response = await fetch(`http://localhost:3000/cart/get/${userId}`);
+                const response = await fetch(`https://greenerygrove.onrender.com/cart/get/${userId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -192,7 +192,7 @@
         async function removeItem(itemId) {
             try {
                 console.log(itemId)
-                const response = await fetch(`http://localhost:3000/cart/${userId}/${itemId}`, {
+                const response = await fetch(`https://greenerygrove.onrender.com/cart/${userId}/${itemId}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) {

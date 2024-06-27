@@ -37,7 +37,7 @@ passport.use('local-user',new LocalStrategy({
 }));
 
 passport.use('google-user',new GoogleStrategy({
-    callbackURL: '/auth/google/redirect',
+    callbackURL: 'https://greenerygrove.onrender.com/auth/google/redirect',
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret
 }, async (accessToken, refreshToken, profile, done) => {  //this is the callback function which get fired when the actual profile info is with us
@@ -90,7 +90,7 @@ passport.use('local-admin',new LocalStrategy({
 }));
 
 passport.use('google-admin',new GoogleStrategy({
-    callbackURL: '/admin/auth/google/redirect',
+    callbackURL: 'https://greenerygrove.onrender.com/admin/auth/google/redirect',
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret
 }, async (accessToken, refreshToken, profile, done) => {  //this is the callback function which get fired when the actual profile info is with us

@@ -58,7 +58,7 @@ exports.addItemToCart = async (req, res) => {
         console.log(cart.id)
         user_doc.cart=cart.id
        await user_doc.save()
-       res.redirect(`http://localhost:3000/cart/${userId}`)
+       res.redirect(`https://greenerygrove.onrender.com/cart/${userId}`)
     //    res.json({ message: 'Item added to cart successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Server error', error });

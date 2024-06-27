@@ -124,7 +124,7 @@
                 <li><a href="#" id="profileLink" class="active">Profile</a></li>
                 <li><a href="#" id="ordersLink">Orders</a></li>
                 <li><a id="profile_id" href="http://">Admin Panel</a></li>
-                <li><a href="/adminlogin/auth/logout" id="logoutLink">Logout</a></li>
+                <li><a href="https://greenerygrove.onrender.com/adminlogin/auth/logout" id="logoutLink">Logout</a></li>
             </ul>
         </div>
         <div class="content">
@@ -173,7 +173,7 @@
         async function fetch_user_data() {
             try {
                 // Define the URL for the API endpoint
-                var url = 'http://localhost:3000/senduser';
+                var url = 'https://greenerygrove.onrender.com/senduser';
 
                 // Make a GET request using the Fetch API
                 const response = await fetch(url, {
@@ -226,12 +226,12 @@
                 console.log(userData);
                 var profile_id = document.querySelector("#profile_id");
                 if (userData.role == "admin") {
-                    var adminurl = `http://localhost:3000/admin/dashboard/${userData._id}/nursery/${userData.nursery}`;
+                    var adminurl = `https://greenerygrove.onrender.com/admin/dashboard/${userData._id}/nursery/${userData.nursery}`;
                     if (userData.nursery) {
                         // Set the href attribute to the constructed URL
                         profile_id.setAttribute('href', adminurl);
                     } else {
-                        adminurl = `http://localhost:3000/admin/dashboard/${userData._id}/nursery/takeinpu`;
+                        adminurl = `https://greenerygrove.onrender.com/admin/dashboard/${userData._id}/nursery/takeinpu`;
                         profile_id.setAttribute('href', adminurl);
                     }
                 } else {
@@ -245,7 +245,7 @@
         async function fetchOrders(userId) {
     try {
         // Construct the API URL using the nurseryId
-        const url = `http://localhost:3000/order/get/${userId}`;
+        const url = `https://greenerygrove.onrender.com/order/get/${userId}`;
 
         // Fetch orders from the API
         const response = await fetch(url, {

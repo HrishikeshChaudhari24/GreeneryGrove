@@ -123,6 +123,7 @@
     <script>
         // Function to get user ID from the URL
         var totalPrice=0;
+        var 
         function getUserId() {
             const urlParams = new URLSearchParams(window.location.search);
             let userId = urlParams.get('userId'); // Attempt to get 'userId' from query parameters
@@ -132,7 +133,7 @@
                 userId = pathParts[pathParts.length - 1]; // Assume 'userId' is the last part of the path
             }
             const go_checkout=document.getElementById("go_checkout")
-            var checkouturl=`https://greenerygrove.onrender.com/order/${userId}`
+            var checkouturl=`https://greenerygrove.onrender.com/order/${userId}/?quantity=1`
             go_checkout.setAttribute("href",checkouturl)
             return userId;
         }

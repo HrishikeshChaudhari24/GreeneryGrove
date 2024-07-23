@@ -123,6 +123,7 @@
     <script>
         // Function to get user ID from the URL
         var totalPrice=0;
+        var quantitity=0;
         function getUserId() {
             const urlParams = new URLSearchParams(window.location.search);
             let userId = urlParams.get('userId'); // Attempt to get 'userId' from query parameters
@@ -132,7 +133,9 @@
                 userId = pathParts[pathParts.length - 1]; // Assume 'userId' is the last part of the path
             }
             const go_checkout=document.getElementById("go_checkout")
-            var checkouturl=`https://greenerygrove.onrender.com/order/${userId}/?quantity=1`
+            let quantity_value=document.getElementById(" quantity_value");
+            console.log(quantity_value)
+            var checkouturl=`https://greenerygrove.onrender.com/order/${userId}?quantity=1`
             go_checkout.setAttribute("href",checkouturl)
             return userId;
         }
@@ -174,13 +177,14 @@
                     <td>${item.nursery}</td>
                     <td class="item-price">$${item.price.toFixed(2)}</td>
                     <td class="item-quantity">
-                        <input type="number" value="${item.quantity}" min="1" data-item-id="${item.itemId}">
+                        <input id="quantity_value" type="number" value="${item.quantity}" min="1" data-item-id="${item.itemId}">
                     </td>
                     <td class="item-total">$${item.totalPrice.toFixed(2)}</td>
                     <td>
                         <button class="btn" onclick="removeItem('${item.itemId}')">Remove</button>
                     </td>
                 `;
+                
                 // plantids.push(item.itemId)
                 cartItemsContainer.appendChild(itemRow);
             });

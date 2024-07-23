@@ -14,6 +14,33 @@ exports.showorderpage=async(req,res)=>{
         // if(req.isAuthenticated()){
             // console.log("hello")
             // console.log(req.user)
+            const { userId } = req.params;
+            console.log(userId)
+            let cartvalue=await Cart.findOne({userId:userId})
+            // console.log(cartvalue)
+            let itemvalue=cartvalue.items
+            var totalP=0;
+            var totalQ=0;
+            let queryValues=req.query
+            for(key in queryValues){
+                console.log(queryValues[key])
+                for(val of itemvalue){
+                    if(key==val.name){
+                        val.quantity=queryValues[key];
+                        let totalp=val.price*val.quantity
+                        val.totalPrice=totalp
+                        totalP+=totalp
+                        totalQ+=parseInt(queryValues[key])
+                    }
+                }
+            }
+            
+            cartvalue.totalQuantity=totalQ
+            cartvalue.totalPrice=totalP
+            cartvalue.save();
+            console.log(cartvalue)
+            // cartvalue.save();
+
             res.sendFile(path.join(__dirname,"../index/checkout.html"))
         // }
         

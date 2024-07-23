@@ -121,7 +121,7 @@
     </div>
 
     <script>
-       document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('DOMContentLoaded', () => {
     const totalPriceElement = document.getElementById('total-price');
     const cartItemsContainer = document.getElementById('cart-items');
     const goCheckout = document.getElementById('go_checkout');
@@ -188,7 +188,7 @@
                 </td>
                 <td class="item-total">$${item.totalPrice.toFixed(2)}</td>
                 <td>
-                    <button class="btn" onclick="removeItem('${item.itemId}')">Remove</button>
+                    <button class="btn remove-item" data-item-id="${item.itemId}">Remove</button>
                 </td>
             `;
 
@@ -200,8 +200,8 @@
 
         totalPriceElement.textContent = cartData.totalPrice.toFixed(2);
 
-        let quantityInputs = document.querySelectorAll('.quantity_val');
-        quantityInputs.forEach(input => {
+        // Add event listeners for quantity changes
+        document.querySelectorAll('.quantity_val').forEach(input => {
             input.addEventListener('change', (e) => {
                 const itemName = e.target.name;
                 const itemQuantity = e.target.value;
@@ -216,6 +216,14 @@
                 console.log(plantArray);
             });
         });
+
+        // Add event listeners for remove buttons
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemId = button.getAttribute('data-item-id');
+                removeItem(itemId);
+            });
+        });
     }
 
     // Function to update checkout URL with quantities
@@ -224,7 +232,6 @@
 
         plantArray.forEach(item => {
             checkoutUrl += `${encodeURIComponent(item.name)}=${encodeURIComponent(item.quantity)}&`;
-            console.log(checkoutUrl)
         });
 
         goCheckout.setAttribute("href", checkoutUrl);
@@ -245,6 +252,7 @@
         }
     }
 });
+
     </script>
 </body>
 </html>
